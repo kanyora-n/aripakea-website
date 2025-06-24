@@ -1,5 +1,5 @@
 /**
- * @file Main JavaScript file for the Aripack Website.
+ * @file Main JavaScript file for the Aripak Website.
  * @author A 15-year Experience Developer
  * @version 2.0.0
  *
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderOnScroll();
     initCopyrightYear();
 
-    console.log('Aripack Website scripts initialized successfully.');
+    console.log('Aripak Website scripts initialized successfully.');
 });
 
 
