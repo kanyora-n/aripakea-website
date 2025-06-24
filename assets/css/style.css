@@ -1,0 +1,387 @@
+/*
+ * Aripack Multi Packaging Solutions - Stylesheet
+ *
+ * TABLE OF CONTENTS
+ * -----------------
+ * 1.  RESET & GLOBAL STYLES
+ * 2.  THEME & VARIABLES
+ * 3.  UTILITY CLASSES
+ * 4.  HEADER & NAVIGATION
+ * 5.  HERO SECTION
+ * 6.  SECTION STYLES
+ * 7.  PRODUCT GRID & CARDS
+ * 8.  BUTTONS
+ * 9.  FOOTER
+ * 10. RESPONSIVE MEDIA QUERIES
+ */
+
+/* ============================================= */
+/* 1. RESET & GLOBAL STYLES */
+/* ============================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* Enables smooth scrolling for anchor links */
+    scroll-behavior: smooth;
+    /* Improves fluid typography scaling */
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ============================================= */
+/* 2. THEME & VARIABLES */
+/* ============================================= */
+:root {
+    /* Colors */
+    --color-primary: #005A9C;  /* A professional blue */
+    --color-secondary: #E87722; /* A vibrant orange for contrast */
+    --color-text: #333333;
+    --color-text-light: #ffffff;
+    --color-background: #f8f9fa;
+    --color-white: #ffffff;
+    --color-dark: #212529;
+
+    /* Typography */
+    /* Using clamp() for fluid font sizes: clamp(MIN, PREFERRED, MAX) */
+    --font-size-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    --font-size-h2: clamp(2rem, 4vw + 1rem, 3rem);
+    --font-size-lead: 1.25rem;
+    --font-size-base: 1rem;
+
+    /* Spacing */
+    --spacing-section: 5rem;
+}
+
+/* ============================================= */
+/* 3. UTILITY CLASSES */
+/* ============================================= */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.lead {
+    font-size: var(--font-size-lead);
+    max-width: 75ch; /* Optimal line length for readability */
+    margin: 1rem auto;
+}
+
+/* For screen readers only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* ============================================= */
+/* 4. HEADER & NAVIGATION */
+/* ============================================= */
+.site-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--color-white);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Add shadow on scroll */
+.site-header--scrolled {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.navbar__logo img {
+    height: 50px;
+}
+
+.navbar__toggle {
+    display: none; /* Hidden on desktop */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.navbar__toggle .icon-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+}
+
+.navbar__nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar__nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: bold;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar__nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar__nav-links a:hover,
+.navbar__nav-links a.is-active {
+    color: var(--color-primary);
+}
+
+.navbar__nav-links a:hover::after,
+.navbar__nav-links a.is-active::after {
+    transform: scaleX(1);
+}
+
+/* ============================================= */
+/* 5. HERO SECTION */
+/* ============================================= */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('../images/hero-background.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+}
+
+.hero__content {
+    position: relative; /* To be on top of the overlay */
+    z-index: 1;
+}
+
+.hero__title {
+    font-size: var(--font-size-h1);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.hero__slogan {
+    font-size: var(--font-size-lead);
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+
+/* ============================================= */
+/* 6. SECTION STYLES */
+/* ============================================= */
+.section {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+}
+
+.section--light {
+    background-color: var(--color-white);
+}
+
+.section__title {
+    text-align: center;
+    font-size: var(--font-size-h2);
+    margin-bottom: 3rem;
+    color: var(--color-primary);
+}
+
+
+/* ============================================= */
+/* 7. PRODUCT GRID & CARDS */
+/* ============================================= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: var(--color-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-card__caption {
+    padding: 1.5rem;
+    flex-grow: 1; /* Ensures footer content aligns */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.product-card p {
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+
+/* ============================================= */
+/* 8. BUTTONS */
+/* ============================================= */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn--primary:hover {
+    background-color: #004a80; /* Darker shade of primary */
+    transform: translateY(-2px);
+}
+
+.btn--secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    align-self: flex-start; /* Aligns button inside the flex caption */
+}
+
+.btn--secondary:hover {
+    background-color: #d0661e; /* Darker shade of secondary */
+    transform: translateY(-2px);
+}
+
+
+/* ============================================= */
+/* 9. FOOTER */
+/* ============================================= */
+.site-footer {
+    background-color: var(--color-dark);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: var(--spacing-section);
+}
+
+/* ============================================= */
+/* 10. RESPONSIVE MEDIA QUERIES */
+/* ============================================= */
+@media (max-width: 768px) {
+    .navbar__toggle {
+        display: block;
+        z-index: 1001; /* Above nav links */
+    }
+
+    .navbar__nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .navbar__nav-links.is-open {
+        transform: translateX(0);
+    }
+
+    /* Animate hamburger to 'X' */
+    .navbar__toggle.is-open .icon-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .navbar__toggle.is-open .icon-bar:nth-child(2) {
+        opacity: 0;
+    }
+    .navbar__toggle.is-open .icon-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
