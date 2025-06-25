@@ -7,16 +7,22 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="index.html" class="logo">
+    <header class="site-header" id="site-header">
+        <div class="container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <a href="index.html" class="navbar__logo">
                     <img src="assets/images/Aripakea-logo.jpg" alt="Aripak Multi Packaging Solutions Logo">
                 </a>
-                <ul class="nav-links">
+                <button class="navbar__toggle" id="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul class="navbar__nav-links" id="primary-navigation">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Products</a></li>
-                    <li><a href="csr.html">Corporate Social Responsibility</a></li>
+                    <li><a href="csr.html" class="is-active">Corporate Social Responsibility</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
                 <div class="menu-btn">
@@ -28,7 +34,7 @@
 
     <section class="csr">
         <div class="container">
-            <h2>Corporate Social Responsibility</h2>
+            <h2 class="section__title">Corporate Social Responsibility</h2>
             <p>
                 At Aripak Multi Packaging Solutions, we believe in giving back to the community and protecting our environment. We are committed to sustainable practices and social responsibility in all aspects of our business.
             </p>
