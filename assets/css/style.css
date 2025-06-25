@@ -12,7 +12,11 @@
  * 7.  PRODUCT GRID & CARDS
  * 8.  BUTTONS
  * 9.  FOOTER
- * 10. RESPONSIVE MEDIA QUERIES
+ * 10. PAGE HEADER
+ * 11. CONTENT & PRODUCT LIST
+ * 12. CONTACT PAGE & FORM
+ * 13. RESPONSIVE MEDIA QUERIES
+ * 14. MOBILE-FIRST & TOUCH OPTIMIZATIONS
  */
 
 /* ============================================= */
@@ -27,15 +31,13 @@
 }
 
 html {
-    /* Enables smooth scrolling for anchor links */
     scroll-behavior: smooth;
-    /* Improves fluid typography scaling */
     font-size: 100%;
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.7;
     background-color: var(--color-background);
     color: var(--color-text);
     -webkit-font-smoothing: antialiased;
@@ -52,8 +54,8 @@ img {
 /* ============================================= */
 :root {
     /* Colors */
-    --color-primary: #005A9C;  /* A professional blue */
-    --color-secondary: #E87722; /* A vibrant orange for contrast */
+    --color-primary: #005A9C;
+    --color-secondary: #E87722;
     --color-text: #333333;
     --color-text-light: #ffffff;
     --color-background: #f8f9fa;
@@ -61,10 +63,9 @@ img {
     --color-dark: #212529;
 
     /* Typography */
-    /* Using clamp() for fluid font sizes: clamp(MIN, PREFERRED, MAX) */
-    --font-size-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-    --font-size-h2: clamp(2rem, 4vw + 1rem, 3rem);
-    --font-size-lead: 1.25rem;
+    --font-size-h1: clamp(2.25rem, 5vw + 1rem, 4rem);
+    --font-size-h2: clamp(1.75rem, 4vw + 1rem, 2.75rem);
+    --font-size-lead: 1.2rem;
     --font-size-base: 1rem;
 
     /* Spacing */
@@ -88,11 +89,10 @@ img {
 
 .lead {
     font-size: var(--font-size-lead);
-    max-width: 75ch; /* Optimal line length for readability */
+    max-width: 70ch;
     margin: 1rem auto;
 }
 
-/* For screen readers only */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -119,7 +119,6 @@ img {
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Add shadow on scroll */
 .site-header--scrolled {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -132,24 +131,25 @@ img {
 }
 
 .navbar__logo img {
-    height: 50px;
+    height: 45px; /* Slightly smaller for better vertical alignment */
 }
 
 .navbar__toggle {
-    display: none; /* Hidden on desktop */
+    display: none;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    z-index: 1001;
 }
 
 .navbar__toggle .icon-bar {
     display: block;
-    width: 25px;
+    width: 28px; /* Slightly larger for easier tapping */
     height: 3px;
     background-color: var(--color-text);
-    margin: 5px 0;
-    transition: transform 0.3s ease;
+    margin: 6px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .navbar__nav-links {
@@ -162,7 +162,7 @@ img {
     text-decoration: none;
     color: var(--color-text);
     font-weight: bold;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     position: relative;
     transition: color 0.3s ease;
 }
@@ -173,7 +173,7 @@ img {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 3px;
     background-color: var(--color-secondary);
     transform: scaleX(0);
     transform-origin: left;
@@ -195,8 +195,8 @@ img {
 /* ============================================= */
 .hero {
     position: relative;
-    height: 100vh;
-    background: url('../images/hero-section-background.jpg') no-repeat center center/cover;
+    height: 95vh;
+    background: url('../images/hero-background.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     color: var(--color-text-light);
@@ -209,11 +209,11 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .hero__content {
-    position: relative; /* To be on top of the overlay */
+    position: relative;
     z-index: 1;
 }
 
@@ -226,7 +226,7 @@ img {
 .hero__slogan {
     font-size: var(--font-size-lead);
     font-weight: 300;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 
@@ -282,7 +282,7 @@ img {
 
 .product-card__caption {
     padding: 1.5rem;
-    flex-grow: 1; /* Ensures footer content aligns */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
@@ -299,18 +299,22 @@ img {
 
 
 /* ============================================= */
-/* 8. BUTTONS */
+/* 8. BUTTONS - TOUCH OPTIMIZED */
 /* ============================================= */
 .btn {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
+    padding: 0.9rem 1.75rem; /* Increased padding */
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Slightly larger radius */
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.1rem; /* Slightly larger font */
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    min-height: 48px; /* Minimum tap target size */
+    line-height: 1.5;
 }
 
 .btn--primary {
@@ -319,18 +323,18 @@ img {
 }
 
 .btn--primary:hover {
-    background-color: #004a80; /* Darker shade of primary */
+    background-color: #004a80;
     transform: translateY(-2px);
 }
 
 .btn--secondary {
     background-color: var(--color-secondary);
     color: var(--color-white);
-    align-self: flex-start; /* Aligns button inside the flex caption */
+    align-self: flex-start;
 }
 
 .btn--secondary:hover {
-    background-color: #d0661e; /* Darker shade of secondary */
+    background-color: #d0661e;
     transform: translateY(-2px);
 }
 
@@ -342,57 +346,17 @@ img {
     background-color: var(--color-dark);
     color: var(--color-text-light);
     text-align: center;
-    padding: 2rem 0;
+    padding: 3rem 0;
     margin-top: var(--spacing-section);
 }
 
 /* ============================================= */
-/* 10. RESPONSIVE MEDIA QUERIES */
-/* ============================================= */
-@media (max-width: 768px) {
-    .navbar__toggle {
-        display: block;
-        z-index: 1001; /* Above nav links */
-    }
-
-    .navbar__nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--color-white);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 3rem;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .navbar__nav-links.is-open {
-        transform: translateX(0);
-    }
-
-    /* Animate hamburger to 'X' */
-    .navbar__toggle.is-open .icon-bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .navbar__toggle.is-open .icon-bar:nth-child(2) {
-        opacity: 0;
-    }
-    .navbar__toggle.is-open .icon-bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-}
-
-/* ============================================= */
-/* 11. PAGE HEADER (For non-homepage titles) */
+/* 10. PAGE HEADER */
 /* ============================================= */
 .page-header {
     background-color: var(--color-primary);
     color: var(--color-white);
-    padding-top: calc(var(--spacing-section) + 80px); /* 80px is header height */
+    padding-top: calc(var(--spacing-section) + 80px);
     padding-bottom: var(--spacing-section);
     text-align: center;
 }
@@ -402,7 +366,7 @@ img {
 }
 
 /* ============================================= */
-/* 12. CONTENT & PRODUCT LIST STYLES */
+/* 11. CONTENT & PRODUCT LIST */
 /* ============================================= */
 .content-section {
     max-width: 800px;
@@ -415,8 +379,39 @@ img {
     color: var(--color-primary);
 }
 
+.product-list ul {
+    list-style: none;
+    padding: 0;
+    column-count: 2;
+    column-gap: 2.5rem;
+}
+
+.product-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.product-list li::before {
+    content: '✓';
+    color: var(--color-secondary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
 /* ============================================= */
-/* 14. RESPONSIVE ADJUSTMENTS */
+/* 12. CONTACT PAGE & FORM - TOUCH OPTIMIZED */
+/* ============================================= */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+/* ============================================= */
+/* 13. RESPONSIVE MEDIA QUERIES */
 /* ============================================= */
 @media (max-width: 992px) {
     .contact-grid {
@@ -424,8 +419,89 @@ img {
     }
 }
 
+@media (max-width: 768px) {
+    .navbar__toggle {
+        display: block;
+    }
+
+    .navbar__nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(5px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem; /* Reduced gap for more links on screen */
+        transform: translateX(100%);
+        transition: transform 0.35s ease-in-out;
+    }
+
+    .navbar__nav-links.is-open {
+        transform: translateX(0);
+    }
+
+    /* Animate hamburger to 'X' */
+    .navbar__toggle.is-open .icon-bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .navbar__toggle.is-open .icon-bar:nth-child(2) {
+        opacity: 0;
+    }
+    .navbar__toggle.is-open .icon-bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
 @media (max-width: 576px) {
     .product-list ul {
         column-count: 1;
+    }
+}
+
+/* ============================================= */
+/* 14. MOBILE-FIRST & TOUCH OPTIMIZATIONS */
+/* ============================================= */
+@media (max-width: 768px) {
+    html {
+        /* Increase base font size on mobile for better readability */
+        font-size: 110%;
+    }
+
+    :root {
+         /* Adjust spacing for smaller screens */
+        --spacing-section: 3.5rem;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .navbar__nav-links a {
+        /* Create large, easy-to-tap links in the mobile menu */
+        display: block;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        width: 80%;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    
+    .navbar__nav-links a:hover {
+        background-color: rgba(0, 90, 156, 0.1);
+    }
+    
+    .navbar__nav-links a.is-active {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+    }
+
+    .navbar__nav-links a::after {
+        /* Disable underline effect on mobile nav links */
+        display: none;
     }
 }
