@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products | Food, Industrial & Custom Packaging | Aripack</title>
+    <meta name="description" content="Explore our wide range of packaging products including food packaging, custom bags, industrial packaging, and more. Quality solutions from Aripak in Nairobi.">
+    <title>Our Products | Packaging Solutions | Aripak</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
     <header class="site-header" id="site-header">
         <div class="container">
             <nav class="navbar" aria-label="Main Navigation">
@@ -22,22 +24,24 @@
                 <ul class="navbar__nav-links" id="primary-navigation">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html" class="is-active">Products</a></li>
-                    <li><a href="csr.html">Corporate Social Responsibility</a></li>
+                    <li><a href="csr.html">CSR</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
-                <div class="menu-btn">
-                    <div class="menu-btn__burger"></div>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
 
-    <section class="products">
-        <div class="container">
-            <h2 class="section__title">Our Products</h2>
+    <main>
+        <section class="section page-header">
+            <div class="container">
+                <h1 class="page-title">Our Products</h1>
+                <p class="lead">We provide a comprehensive range of packaging solutions tailored to your business needs.</p>
+            </div>
+        </section>
 
-            <div id="food-packaging" class="product-category">
-                <h3>Food Packaging</h3>
+    <section class="section section--light" id="food-packaging">
+            <div class="container">
+                <h2 class="section__title">Food Packaging</h2>
                 <div class="product-grid">
                     <div class="product-card"><img src="product-placeholder.jpg" alt="Black Food Punnets"><h4>Black Food Punnets</h4></div>
                     <div class="product-card"><img src="product-placeholder.jpg" alt="Food Punnets"><h4>Food Punnets</h4></div>
@@ -52,8 +56,9 @@
                 </div>
             </div>
 
-            <div id="bags" class="product-category">
-                <h3>Bags</h3>
+            <section class="section" id="bags">
+            <div class="container">
+                <h2 class="section__title">Bags & Sacs</h2>
                 <div class="product-grid">
                     <div class="product-card"><img src="product-placeholder.jpg" alt="Garbage Bags"><h4>Garbage Bags</h4></div>
                     <div class="product-card"><img src="product-placeholder.jpg" alt="Khaki Bags"><h4>Khaki Bags</h4></div>
@@ -67,13 +72,14 @@
             
             </div>
     </section>
+</main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2025 Aripak Multi Packaging Solutions. All Rights Reserved.</p>
+            <p>&copy; <span id="current-year">2025</span> Aripak Multi Packaging Solutions. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -196,7 +196,7 @@ img {
 .hero {
     position: relative;
     height: 100vh;
-    background: url('../images/hero-background.jpg') no-repeat center center/cover;
+    background: url('../images/hero-section-background.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     color: var(--color-text-light);
@@ -383,5 +383,49 @@ img {
     }
     .navbar__toggle.is-open .icon-bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* ============================================= */
+/* 11. PAGE HEADER (For non-homepage titles) */
+/* ============================================= */
+.page-header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding-top: calc(var(--spacing-section) + 80px); /* 80px is header height */
+    padding-bottom: var(--spacing-section);
+    text-align: center;
+}
+
+.page-title {
+    font-size: var(--font-size-h1);
+}
+
+/* ============================================= */
+/* 12. CONTENT & PRODUCT LIST STYLES */
+/* ============================================= */
+.content-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content-section h3, .content-section h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+/* ============================================= */
+/* 14. RESPONSIVE ADJUSTMENTS */
+/* ============================================= */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-list ul {
+        column-count: 1;
     }
 }
