@@ -1,22 +1,7 @@
 /*
- * Aripak Multi Packaging Solutions - Stylesheet
+ * Aripack Multi Packaging Solutions - Stylesheet
  *
- * TABLE OF CONTENTS
- * -----------------
- * 1.  RESET & GLOBAL STYLES
- * 2.  THEME & VARIABLES
- * 3.  UTILITY CLASSES
- * 4.  HEADER & NAVIGATION
- * 5.  HERO SECTION
- * 6.  SECTION STYLES
- * 7.  PRODUCT GRID & CARDS
- * 8.  BUTTONS
- * 9.  FOOTER
- * 10. PAGE HEADER
- * 11. CONTENT & PRODUCT LIST
- * 12. CONTACT PAGE & FORM
- * 13. RESPONSIVE MEDIA QUERIES
- * 14. MOBILE-FIRST & TOUCH OPTIMIZATIONS
+ * FINAL VERSION 3.0 - AGGRESSIVE TOUCH OPTIMIZATION
  */
 
 /* ============================================= */
@@ -66,7 +51,6 @@ img {
     --font-size-h1: clamp(2.25rem, 5vw + 1rem, 4rem);
     --font-size-h2: clamp(1.75rem, 4vw + 1rem, 2.75rem);
     --font-size-lead: 1.2rem;
-    --font-size-base: 1rem;
 
     /* Spacing */
     --spacing-section: 5rem;
@@ -105,7 +89,6 @@ img {
     border: 0;
 }
 
-
 /* ============================================= */
 /* 4. HEADER & NAVIGATION */
 /* ============================================= */
@@ -131,7 +114,7 @@ img {
 }
 
 .navbar__logo img {
-    height: 45px; /* Slightly smaller for better vertical alignment */
+    height: 45px;
 }
 
 .navbar__toggle {
@@ -139,13 +122,15 @@ img {
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    /* FAT FINGER OPTIMIZATION: Make the invisible tappable area larger */
+    padding: 1rem;
+    margin: -1rem; /* Counteract padding to keep visual alignment */
     z-index: 1001;
 }
 
 .navbar__toggle .icon-bar {
     display: block;
-    width: 28px; /* Slightly larger for easier tapping */
+    width: 28px;
     height: 3px;
     background-color: var(--color-text);
     margin: 6px 0;
@@ -196,7 +181,7 @@ img {
 .hero {
     position: relative;
     height: 95vh;
-    background: url('../images/hero-section-background.jpg') no-repeat center center/cover;
+    background: url('../images/hero-background.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     color: var(--color-text-light);
@@ -229,7 +214,6 @@ img {
     margin-bottom: 2.5rem;
 }
 
-
 /* ============================================= */
 /* 6. SECTION STYLES */
 /* ============================================= */
@@ -248,7 +232,6 @@ img {
     margin-bottom: 3rem;
     color: var(--color-primary);
 }
-
 
 /* ============================================= */
 /* 7. PRODUCT GRID & CARDS */
@@ -297,23 +280,22 @@ img {
     flex-grow: 1;
 }
 
-
 /* ============================================= */
-/* 8. BUTTONS - TOUCH OPTIMIZED */
+/* 8. BUTTONS - FAT FINGER OPTIMIZED */
 /* ============================================= */
 .btn {
     display: inline-block;
-    padding: 0.9rem 1.75rem; /* Increased padding */
+    padding: 1.1rem 2rem; /* Even more generous padding */
     border: none;
-    border-radius: 8px; /* Slightly larger radius */
+    border-radius: 10px; /* Softer radius for a modern feel */
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1rem; /* Slightly larger font */
+    font-size: 1.2rem; /* Larger, more readable font */
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
-    min-height: 48px; /* Minimum tap target size */
+    -webkit-tap-highlight-color: transparent;
+    min-height: 56px; /* Exceeds minimum for comfort */
     line-height: 1.5;
 }
 
@@ -337,7 +319,6 @@ img {
     background-color: #d0661e;
     transform: translateY(-2px);
 }
-
 
 /* ============================================= */
 /* 9. FOOTER */
@@ -373,6 +354,15 @@ img {
     margin: 0 auto;
 }
 
+.content-section p a {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: underline;
+    /* FAT FINGER OPTIMIZATION: Give in-text links a little more tappable area */
+    padding: 0.25rem;
+    margin: -0.25rem;
+}
+
 .content-section h3, .content-section h4 {
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -402,7 +392,7 @@ img {
 }
 
 /* ============================================= */
-/* 12. CONTACT PAGE & FORM - TOUCH OPTIMIZED */
+/* 12. CONTACT PAGE & FORM - FAT FINGER OPTIMIZED */
 /* ============================================= */
 .contact-grid {
     display: grid;
@@ -411,7 +401,7 @@ img {
 }
 
 /* ============================================= */
-/* 13. RESPONSIVE MEDIA QUERIES */
+/* 13. RESPONSIVE & MOBILE OPTIMIZATIONS */
 /* ============================================= */
 @media (max-width: 992px) {
     .contact-grid {
@@ -420,28 +410,19 @@ img {
 }
 
 @media (max-width: 768px) {
-    .navbar__toggle {
-        display: block;
+    html {
+        /* Increase base font size on mobile for better readability */
+        font-size: 112.5%; /* Makes 1rem = 18px */
     }
 
-    .navbar__nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(5px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem; /* Reduced gap for more links on screen */
-        transform: translateX(100%);
-        transition: transform 0.35s ease-in-out;
+    :root {
+         /* Adjust spacing for smaller screens */
+        --spacing-section: 3.5rem;
     }
 
-    .navbar__nav-links.is-open {
-        transform: translateX(0);
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     /* Animate hamburger to 'X' */
@@ -454,41 +435,36 @@ img {
     .navbar__toggle.is-open .icon-bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
-}
-
-@media (max-width: 576px) {
-    .product-list ul {
-        column-count: 1;
-    }
-}
-
-/* ============================================= */
-/* 14. MOBILE-FIRST & TOUCH OPTIMIZATIONS */
-/* ============================================= */
-@media (max-width: 768px) {
-    html {
-        /* Increase base font size on mobile for better readability */
-        font-size: 110%;
-    }
-
-    :root {
-         /* Adjust spacing for smaller screens */
-        --spacing-section: 3.5rem;
+    
+    .navbar__nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(5px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* FAT FINGER OPTIMIZATION: More space between menu items */
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.35s ease-in-out;
     }
     
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
+    .navbar__nav-links.is-open {
+        transform: translateX(0);
     }
 
     .navbar__nav-links a {
-        /* Create large, easy-to-tap links in the mobile menu */
         display: block;
-        padding: 1rem 2rem;
-        border-radius: 8px;
-        width: 80%;
+        padding: 1rem 1.5rem; /* Generous padding */
+        border-radius: 12px;
+        width: 85%;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.6rem; /* Large, clear font */
+        -webkit-tap-highlight-color: transparent;
     }
     
     .navbar__nav-links a:hover {
@@ -501,7 +477,10 @@ img {
     }
 
     .navbar__nav-links a::after {
-        /* Disable underline effect on mobile nav links */
         display: none;
+    }
+
+    .product-list ul {
+        column-count: 1;
     }
 }
