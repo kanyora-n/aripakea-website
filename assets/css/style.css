@@ -1,5 +1,7 @@
 /*
- * Aripak Multi Packaging Solutions - Stylesheet
+ * Aripack Multi Packaging Solutions - Stylesheet
+ *
+ * FINAL, CLEANED & CORRECTED VERSION
  *
  * TABLE OF CONTENTS
  * -----------------
@@ -14,9 +16,8 @@
  * 9.  FOOTER
  * 10. PAGE HEADER
  * 11. CONTENT & PRODUCT LIST
- * 12. CONTACT PAGE & FORM
+ * 12. CONTACT PAGE STYLES (NEW)
  * 13. RESPONSIVE MEDIA QUERIES
- * 14. MOBILE-FIRST & TOUCH OPTIMIZATIONS
  */
 
 /* ============================================= */
@@ -66,7 +67,6 @@ img {
     --font-size-h1: clamp(2.25rem, 5vw + 1rem, 4rem);
     --font-size-h2: clamp(1.75rem, 4vw + 1rem, 2.75rem);
     --font-size-lead: 1.2rem;
-    --font-size-base: 1rem;
 
     /* Spacing */
     --spacing-section: 5rem;
@@ -130,21 +130,23 @@ img {
 }
 
 .navbar__logo img {
-    height: 45px; /* Slightly smaller for better vertical alignment */
+    height: 45px;
 }
 
 .navbar__toggle {
+    /* This is hidden on desktop by default */
     display: none;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 1rem;
+    margin: -1rem;
     z-index: 1001;
 }
 
 .navbar__toggle .icon-bar {
     display: block;
-    width: 28px; /* Slightly larger for easier tapping */
+    width: 28px;
     height: 3px;
     background-color: var(--color-text);
     margin: 6px 0;
@@ -299,17 +301,17 @@ img {
 /* ============================================= */
 .btn {
     display: inline-block;
-    padding: 0.9rem 1.75rem; /* Increased padding */
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 8px; /* Slightly larger radius */
+    border-radius: 10px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1rem; /* Slightly larger font */
+    font-size: 1.2rem;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
-    min-height: 48px; /* Minimum tap target size */
+    -webkit-tap-highlight-color: transparent;
+    min-height: 56px;
     line-height: 1.5;
 }
 
@@ -397,29 +399,77 @@ img {
 }
 
 /* ============================================= */
-/* 12. CONTACT PAGE & FORM - TOUCH OPTIMIZED */
+/* 12. CONTACT PAGE STYLES (NEW) */
 /* ============================================= */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+.contact-details {
+    text-align: center;
+    background: var(--color-white);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-dark);
+}
+
+.contact-details a {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.contact-details a:hover {
+    background-color: rgba(0, 90, 156, 0.1);
+}
+
+.contact-details a:last-child {
+    margin-bottom: 0;
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 3rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 
 /* ============================================= */
 /* 13. RESPONSIVE MEDIA QUERIES */
 /* ============================================= */
-@media (max-width: 992px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 768px) {
+    html {
+        /* Increase base font size on mobile for better readability */
+        font-size: 112.5%; /* Makes 1rem = 18px */
+    }
+
+    :root {
+         /* Adjust spacing for smaller screens */
+        --spacing-section: 3.5rem;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* This rule shows the hamburger icon on mobile */
     .navbar__toggle {
         display: block;
     }
 
+    /* This rule hides the desktop links... */
     .navbar__nav-links {
         position: fixed;
         top: 0;
@@ -431,15 +481,16 @@ img {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1rem; /* Reduced gap for more links on screen */
+        gap: 2rem;
         transform: translateX(100%);
         transition: transform 0.35s ease-in-out;
     }
-
+    
+    /* ... and this class (toggled by JS) shows them when the menu is open. */
     .navbar__nav-links.is-open {
         transform: translateX(0);
     }
-
+    
     /* Animate hamburger to 'X' */
     .navbar__toggle.is-open .icon-bar:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
@@ -450,41 +501,15 @@ img {
     .navbar__toggle.is-open .icon-bar:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
-}
-
-@media (max-width: 576px) {
-    .product-list ul {
-        column-count: 1;
-    }
-}
-
-/* ============================================= */
-/* 14. MOBILE-FIRST & TOUCH OPTIMIZATIONS */
-/* ============================================= */
-@media (max-width: 768px) {
-    html {
-        /* Increase base font size on mobile for better readability */
-        font-size: 110%;
-    }
-
-    :root {
-         /* Adjust spacing for smaller screens */
-        --spacing-section: 3.5rem;
-    }
-    
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
 
     .navbar__nav-links a {
-        /* Create large, easy-to-tap links in the mobile menu */
         display: block;
-        padding: 1rem 2rem;
-        border-radius: 8px;
-        width: 80%;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        width: 85%;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        -webkit-tap-highlight-color: transparent;
     }
     
     .navbar__nav-links a:hover {
@@ -497,25 +522,14 @@ img {
     }
 
     .navbar__nav-links a::after {
-        /* Disable underline effect on mobile nav links */
         display: none;
     }
-    .navbar__toggle {
-    display: none; /* This hides the hamburger on desktop by default */
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 1rem;
-    margin: -1rem; 
-    z-index: 1001;
-}
 
-.navbar__toggle .icon-bar {
-    display: block;
-    width: 28px;
-    height: 3px;
-    background-color: var(--color-text);
-    margin: 6px 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    .product-list ul {
+        column-count: 1;
+    }
+
+    .contact-details a {
+        font-size: 1.3rem; /* Adjust font size for mobile contact */
+    }
 }
