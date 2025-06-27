@@ -500,4 +500,22 @@ img {
         /* Disable underline effect on mobile nav links */
         display: none;
     }
+    .navbar__toggle {
+    display: none; /* This hides the hamburger on desktop by default */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    margin: -1rem; 
+    z-index: 1001;
+}
+
+.navbar__toggle .icon-bar {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: var(--color-text);
+    margin: 6px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 }
